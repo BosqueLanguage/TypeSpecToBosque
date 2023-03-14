@@ -1,12 +1,16 @@
 
+scalar UID extends int64;
+
 model User {
+    @pattern("[a-z]+")
     name: string;
-    uid: int64;
+    uid: UID;
+    posts: Post[];
 }
 
 model Post {
     title: string;
-    body: string;
-    uid: int64;
+    body: {title: string, contents: string};
+    uid: UID;
     pid: int64;
 }
